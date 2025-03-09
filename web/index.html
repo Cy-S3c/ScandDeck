@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ScandDeck - Advanced Network Scanning Framework</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <div class="wrapper">
+        <!-- Sidebar -->
+        <nav id="sidebar" class="active">
+            <div class="sidebar-header">
+                <h3>ScandDeck</h3>
+                <div class="logo">SD</div>
+            </div>
+
+            <ul class="list-unstyled components">
+                <li class="active">
+                    <a href="#" data-page="dashboard" class="nav-link">
+                        <i class="fas fa-chart-line"></i> Dashboard
+                    </a>
+                </li>
+                <li>
+                    <a href="#" data-page="scan-config" class="nav-link">
+                        <i class="fas fa-cogs"></i> Scan Configuration
+                    </a>
+                </li>
+                <li>
+                    <a href="#" data-page="results" class="nav-link">
+                        <i class="fas fa-table"></i> Results
+                    </a>
+                </li>
+                <li>
+                    <a href="#" data-page="insights" class="nav-link">
+                        <i class="fas fa-lightbulb"></i> Insights
+                    </a>
+                </li>
+                <li>
+                    <a href="#" data-page="settings" class="nav-link">
+                        <i class="fas fa-sliders-h"></i> Settings
+                    </a>
+                </li>
+            </ul>
+
+            <div class="sidebar-footer">
+                <span>ScandDeck v1.0.0</span>
+            </div>
+        </nav>
+
+        <!-- Page Content -->
+        <div id="content">
+            <nav class="navbar navbar-expand-lg navbar-dark">
+                <div class="container-fluid">
+                    <button type="button" id="sidebarCollapse" class="btn">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                    <div class="d-flex ms-auto">
+                        <div class="dropdown">
+                            <button class="btn dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
+                                <i class="fas fa-bell"></i>
+                                <span class="badge rounded-pill bg-danger">3</span>
+                            </button>
+                            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuButton">
+                                <li><h6 class="dropdown-header">Notifications</h6></li>
+                                <li><a class="dropdown-item" href="#">Scan completed: 192.168.1.0/24</a></li>
+                                <li><a class="dropdown-item" href="#">Vulnerability detected: CVE-2023-1234</a></li>
+                                <li><a class="dropdown-item" href="#">New host discovered: 192.168.1.105</a></li>
+                                <li><hr class="dropdown-divider"></li>
+                                <li><a class="dropdown-item" href="#">View all notifications</a></li>
+                            </ul>
+                        </div>
+                        <div class="dropdown ms-3">
+                            <button class="btn dropdown-toggle" type="button" id="userMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
+                                <i class="fas fa-user-circle"></i>
+                            </button>
+                            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userMenuButton">
+                                <li><a class="dropdown-item" href="#">Profile</a></li>
+                                <li><a class="dropdown-item" href="#">API Keys</a></li>
+                                <li><hr class="dropdown-divider"></li>
+                                <li><a class="dropdown-item" href="#">Logout</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+
+            <!-- Page content containers -->
+            <div id="dashboard-page" class="content-page active">
+                <div class="container-fluid">
+                    <h1 class="page-title">Dashboard</h1>
+                    
+                    <!-- Stats Cards -->
+                    <div class="row mb-4">
+                        <div class="col-xl-3 col-md-6">
+                            <div class="card stats-card">
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col-4 d-flex align-items-center justify-content-center">
+                                            <i class="fas fa-network-wired icon-primary"></i>
+                                        </div>
+                                        <div class="col-8">
+                                            <h5 class="card-title">Total Hosts</h5>
+                                            <h2 class="card-text">458</h2>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card-footer">
+                                    <small class="text-muted">+12 in last 24h</small>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xl-3 col-md-6">
+                            <div class="card stats-card">
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col-4 d-flex align-items-center justify-content-center">
+                                            <i class="fas fa-door-open icon-success"></i>
+                                        </div>
+                                        <div class="col-8">
+                                            <h5 class="card-title">Open Ports</h5>
+                                            <h2 class="card-text">1,240</h2>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card-footer">
+                                    <small class="text-muted">+85 in last 24h</small>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xl-3 col-md-6">
+                            <div class="card stats-card">
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col-4 d-flex align-items-center justify-content-center">
+                                            <i class="fas fa-shield-alt icon-warning"></i>
+                                        </div>
+                                        <div class="col-8">
+                                            <h5 class="card-title">Vulnerabilities</h5>
+                                            <h2 class="card-text">56</h2>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card-footer">
+                                    <small class="text-muted">+3 in last 24h</small>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xl-3 col-md-6">
+                            <div class="card stats-card">
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col-4 d-flex align-items-center justify-content-center">
+                                            <i class="fas fa-history icon-info"></i>
+                                        </div>
+                                        <div class="col-8">
+                                            <h5 class="card-title">Active Scans</h5>
+                                            <h2 class="card-text">2</h2>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card-footer">
+                                    <small class="text-muted">Last started 5m ago</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Recent Scans and Network Map -->
+                    <div class="row mb-4">
+                        <div class="col-lg-8">
+                            <div class="card">
+                                <div class="card-header d-flex justify-content-between align-items-center">
+                                    <h5 class="mb-0">Recent Scans</h5>
+                                    <button class="btn btn-sm btn-primary">View All</button>
+                                </div>
+                                <div class="card-body">
+                                    <div class="table-responsive">
+                                        <table class="table table-hover">
+                                            <thead>
+                                                <tr>
+                                                    <th>Target</th>
+                                                    <th>Scan Type</th>
+                                                    <th>Start Time</th>
+                                                    <th>Duration</th>
+                                                    <th>Status</th>
+                                                    <th>Actions</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>192.168.1.0/24</td>
+                                                    <td>Full Scan</td>
+                                                    <td>2023-09-15 14:30</td>
+                                                    <td>12m 45s</td>
+                                                    <td><span class="badge bg-success">Completed</span></td>
+                                                    <td>
+                                                        <button class="btn btn-sm btn-outline-primary"><i class="fas fa-eye"></i></button>
+                                                        <button class="btn btn-sm btn-outline-secondary"><i class="fas fa-download"></i></button>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>10.0.0.1-10.0.0.50</td>
+                                                    <td>Service Detection</td>
+                                                    <td>2023-09-15 13:15</td>
+                                                    <td>8m 12s</td>
+                                                    <td><span class="badge bg-success">Completed</span></td>
+                                                    <td>
+                                                        <button class="btn btn-sm btn-outline-primary"><i class="fas fa-eye"></i></button>
+                                                        <button class="btn btn-sm btn-outline-secondary"><i class="fas fa-download"></i></button>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>172.16.10.0/24</td>
+                                                    <td>Full Scan</td>
+                                                    <td>2023-09-15 12:05</td>
+                                                    <td>--</td>
+                                                    <td><span class="badge bg-warning">In Progress</span></td>
+                                                    <td>
+                                                        <button class="btn btn-sm btn-outline-primary"><i class="fas fa-eye"></i></button>
+                                                        <button class="btn btn-sm btn-outline-danger"><i class="fas fa-stop"></i></button>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>192.168.0.0/16</td>
+                                                    <td>Quick Scan</td>
+                                                    <td>2023-09-15 10:30</td>
+                                                    <td>--</td>
+                                                    <td><span class="badge bg-warning">In Progress</span></td>
+                                                    <td>
+                                                        <button class="btn btn-sm btn-outline-primary"><i class="fas fa-eye"></i></button>
+                                                        <button class="btn btn-sm btn-outline-danger"><i class="fas fa-stop"></i></button>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-4">
+                            <div class="card">
+                                <div class="card-header">
+                                    <h5 class="mb-0">Network Map</h5>
+                                </div>
+                                <div class="card-body">
+                                    <div id="network-map" class="network-visualization">
+                                        <!-- Network visualization will be rendered by JavaScript -->
+                                        <div class="text-center py-5">
+                                            <i class="fas fa-project-diagram network-placeholder"></i>
+                                            <p class="mt-3">Interactive network visualization</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Top Vulnerabilities and Services -->
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <div class="card">
+                                <div class="card-header d-flex justify-content-between align-items-center">
+                                    <h5 class="mb-0">Top Vulnerabilities</h5>
+                                    <button class="btn btn-sm btn-primary">View All</button>
+                                </div>
+                                <div class="card-body">
+                                    <div class="table-responsive">
+                                        <table class="table table-hover">
+                                            <thead>
+                                                <tr>
+                                                    <th>CVE</th>
+                                                    <th>Severity</th>
+                                                    <th>Affected Hosts</th>
+                                                    <th>Description</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>CVE-2023-1234</td>
+                                                    <td><span class="badge bg-danger">Critical</span></td>
+                                                    <td>12</td>
+                                                    <td>Remote code execution in OpenSSH</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>CVE-2023-5678</td>
+                                                    <td><span class="badge bg-warning">High</span></td>
+                                                    <td>23</td>
+                                                    <td>SQL injection vulnerability</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>CVE-2023-9012</td>
+                                                    <td><span class="badge bg-warning">High</span></td>
+                                                    <td>8</td>
+                                                    <td>Authentication bypass in web
+
